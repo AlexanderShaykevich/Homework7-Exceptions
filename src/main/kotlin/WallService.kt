@@ -50,10 +50,10 @@ class WallService {
         return false
     }
 
-    fun createComment(newComment: Comment) {
+    fun createComment(comment: Comment, postId: Int) {
         for (post in posts) {
-            if (post.id == newComment.id) {
-                comments += newComment
+            if (postId == comment.id) {
+                comments += comment
             } else throw PostNotFoundException()
         }
     }
