@@ -63,8 +63,8 @@ class WallServiceTest {
             null, null, null, 1, null, true, true, true,
             false, false, null, 1))
 
-        service.createComment(Comment(1,1,1," ", null, true, " ",
-            1, 1, null, null, null), 10)
+        service.createComment(Comment(1, 10,1,1," ", null, true, " ",
+            1, 1, null, null, null))
     }
 
 
@@ -76,8 +76,8 @@ class WallServiceTest {
             null, null, null, 1, null, true, true, true,
             false, false, null, 1))
 
-        service.createComment(Comment(1,1,1," ", null, true, " ",
-            1, 1, null, null, null), 1)
+        service.createComment(Comment(1, 1,1,1," ", null, true, " ",
+            1, 1, null, null, null))
 
         val expected = true
         val result = service.comments.isNotEmpty()
