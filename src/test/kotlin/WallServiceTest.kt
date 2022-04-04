@@ -119,6 +119,11 @@ class WallServiceTest {
 
         service.addReportComment(ReportComment(1,5))
 
+        val expected = true
+        val result = service.reportsComment.isNotEmpty()
+
+        assertEquals(expected, result)
+
     }
 
 }

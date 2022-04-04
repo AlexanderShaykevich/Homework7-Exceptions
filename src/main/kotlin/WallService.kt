@@ -3,8 +3,8 @@ import attachments.Attachment
 class WallService {
     private var postId = 1
     private var posts = emptyArray<Post>()
-    private var comments = emptyArray<Comment>()
-    private var reportsComment = emptyArray<ReportComment>()
+    var comments = emptyArray<Comment>()
+    var reportsComment = emptyArray<ReportComment>()
 
     fun add(post: Post): Post {
         val postToAdd = post.copy(id = postId)
