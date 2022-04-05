@@ -30,6 +30,7 @@ class WallService {
         for (post in posts) {
             if (post.id == comment.postId) {
                 comments += comment
+                break
             } else throw PostNotFoundException()
         }
     }
@@ -39,6 +40,7 @@ class WallService {
         for (post in posts) {
             if (post.id == reportComment.postId) {
                 reportsComment += reportComment
+                break
             } else throw PostNotFoundException()
         }
     }
