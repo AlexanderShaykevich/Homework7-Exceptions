@@ -75,14 +75,17 @@ class WallServiceTest {
             1, 1, null, null, null, null, null, " ",
             null, null, null, 1, null, true, true, true,
             false, false, null, 1))
+        service.add(Post(0,1, 1, 1, 100, "Text1", 1,
+            1, 1, null, null, null, null, null, " ",
+            null, null, null, 1, null, true, true, true,
+            false, false, null, 1))
 
-        service.createComment(Comment(1, 1,1,1," ", null, true, " ",
+        service.createComment(Comment(1, 2,1,1," ", null, true, " ",
             1, 1, null, null, null))
 
-        val expected = true
         val result = service.comments.isNotEmpty()
 
-        assertEquals(expected, result)
+        assertTrue(result)
     }
 
     @Test(expected = FalseReasonException::class)
@@ -92,6 +95,7 @@ class WallServiceTest {
             1, 1, null, null, null, null, null, " ",
             null, null, null, 1, null, true, true, true,
             false, false, null, 1))
+
 
         service.addReportComment(ReportComment(1,10))
 
@@ -116,13 +120,16 @@ class WallServiceTest {
             1, 1, null, null, null, null, null, " ",
             null, null, null, 1, null, true, true, true,
             false, false, null, 1))
+        service.add(Post(1,1, 1, 1, 100, "Text", 1,
+            1, 1, null, null, null, null, null, " ",
+            null, null, null, 1, null, true, true, true,
+            false, false, null, 1))
 
-        service.addReportComment(ReportComment(1,5))
+        service.addReportComment(ReportComment(2,5))
 
-        val expected = true
         val result = service.reportsComment.isNotEmpty()
 
-        assertEquals(expected, result)
+        assertTrue(result)
 
     }
 

@@ -2,9 +2,10 @@ import attachments.Attachment
 
 class WallService {
     private var postId = 1
-    private var posts = emptyArray<Post>()
+    var posts = emptyArray<Post>()
     var comments = emptyArray<Comment>()
     var reportsComment = emptyArray<ReportComment>()
+    var count: Int = 0
 
     fun add(post: Post): Post {
         val postToAdd = post.copy(id = postId)
@@ -26,23 +27,39 @@ class WallService {
         return false
     }
 
+//    fun createComment(comment: Comment) {
+//        for (post in posts) {
+//            if (post.id == comment.postId) {
+//                comments += comment
+//                break
+//            } else throw PostNotFoundException()
+//        }
+//    }
+
     fun createComment(comment: Comment) {
+        var isPostExists = false
+
         for (post in posts) {
             if (post.id == comment.postId) {
                 comments += comment
-                break
-            } else throw PostNotFoundException()
+                isPostExists = true
+            }
         }
+
+        if (!isPostExists) throw PostNotFoundException()
     }
 
     fun addReportComment(reportComment: ReportComment) {
+        var isReportCommentExists = false
+
         if (reportComment.reason !in 0..8) throw FalseReasonException()
         for (post in posts) {
             if (post.id == reportComment.postId) {
                 reportsComment += reportComment
-                break
-            } else throw PostNotFoundException()
+                isReportCommentExists = true
+            }
         }
+        if (!isReportCommentExists) throw PostNotFoundException()
     }
 
 
